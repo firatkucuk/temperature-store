@@ -1,0 +1,22 @@
+server:
+    port: 8080
+
+spring:
+    cloud:
+        gateway:
+            globalcors:
+                add-to-simple-url-handler-mapping: true
+                corsConfigurations:
+                    '[/**]':
+                        allowedOrigins: '*'
+                        allowedMethods: '*'
+                        allowedHeaders: '*'
+            routes:
+                -   id: sensor-command
+                    uri: http://localhost:8081
+                    predicates:
+                        - Path=/api/store/**
+                -   id: sensor-query
+                    uri: http://localhost:8082
+                    predicates:
+                        - Path=/api/query/**

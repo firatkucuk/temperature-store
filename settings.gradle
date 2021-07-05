@@ -1,0 +1,6 @@
+rootProject.name = 'temperature-store'
+
+include("gateway")
+include("common")
+include("sensor-command")
+include("sensor-query")
